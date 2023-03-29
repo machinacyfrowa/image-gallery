@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+}
+div#bigPictureContainer {
+    display: flex;
+    margin-top: 1rem;
+}
+div#bigPictureContainer > div  {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+div#bigPictureContainer > div > i  {
+    flex: 1;
+    font-size: 3rem;
+}
+div#bigPictureContainer div#bigPicture {
+    flex: 10;
+}
+div#bigPicture img {
+    max-width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
