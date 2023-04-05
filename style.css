@@ -5,7 +5,7 @@ body {
 div#bigPictureContainer {
     display: flex;
     margin-top: 1rem;
-    height: 80vh;
+    height: calc(80vh - 1rem);
 }
 div#bigPictureContainer > div  {
     flex: 1;
@@ -24,4 +24,28 @@ div#bigPictureContainer div#bigPicture {
 div#bigPicture img {
     max-width: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+div#thumbnailContainer {
+    height: 20vh;
+    display: flex;
+    padding-top: 1rem;
+}
+div#thumbnailContainer > div {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+div#thumbnailContainer > div > i  {
+    flex: 1;
+    font-size: 1rem;
+}
+div#thumbnailContainer div#thumbnailRoll {
+    flex: 10;
+    overflow: hidden;
+    
+    
+}
+div#thumbnailContainer div#thumbnailRoll img {
+    height: 100%;
 }
