@@ -41,3 +41,11 @@ function getRandomImageUrl() {
 
 document.getElementById("bigPicture").addEventListener("click", showOverlay);
 document.getElementById("fullScreenOverlay").addEventListener("click", hideOverlay);
+//wygeneruj listę wszystkich obrazków na stronie
+let imageList = document.getElementsByTagName("img");
+//przejdź przez listę pętlą
+for(let i = 0; i < imageList.length; i++) {
+    //zmień url obrazka na wygenerowany losowo
+    imageList[i].src = getRandomImageUrl();
+}
+    
