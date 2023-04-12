@@ -8,23 +8,35 @@ function hideOverlay() {
     let overlay = document.getElementById("fullScreenOverlay");
     overlay.style.display = "none";
 }
-function getRandomImage() {
+function getRandomFromRange(min, max) {
+    let random = Math.random();
+    //wyliczamy losowa szerokosc wedlug kryteriow
+    let range = max - min;
+    //losowa liczba z zakresu
+    let randomFromRange = random * range;
+    //zaokrąglij
+    randomFromRange = Math.round(randomFromRange);
+    //dodaj minimum żeby dostać finalną liczbę
+    random = randomFromRange + min
+    //zwróć finalną liczbę
+    return random;
+}
+function getRandomImageUrl() {
     //funkcja generuje losowy url zdjęcia z rozdzielczością z zadanego zakresu
     // w postaci https://picsum.photos/640/480
     //zdefiniuj sobie minimalną szerokość zdjęcia
     const minWidth = 1900;
     //definiujemy maksymalną szerokość zdjęcia
     const maxWidth = 2500;
-    //losujemy sobie wartość z zakresu <0;1>
-    let random = Math.random();
-    //wyliczamy losową szerokość według kryteriów
-    let range = maxWidth - minWidth;
-    //losowa liczba z zakresu 0-600 (maxWidth - minWidth)
-    let randomFromRange = random * range;
-    //zaokrąglamy do liczby całkowitej
-    randomFromRange = Math.round(randomFromRange);
-    //dodajemy minimum i zwracamy
-    return randomFromRange + minWidth;
+    //generujemy losową szerokość z zakresu
+    let randomWidth = getRandomFromRange(minWidth, maxWidth);
+    //to samo dla wysokości
+    const minHeight = 900;
+    const maxHeight = 1200;
+    let randomHeight = getRandomFromRange(minHeight, maxHeight);
+    //sklejamy sobie url
+    let url = "https://picsum.photos/" + randomWidth + "/" + randomHeight;
+    return url;
 }
 
 document.getElementById("bigPicture").addEventListener("click", showOverlay);
