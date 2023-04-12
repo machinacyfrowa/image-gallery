@@ -42,8 +42,10 @@ function getRandomImageUrl() {
     let url = "https://picsum.photos/" + randomWidth + "/" + randomHeight;
     return url;
 }
-function thumbnailClick() {
-    console.log("działa!");
+function thumbnailClick(event) {
+    //pobierz url zdjęcia klikniętej miniatury korzystając z właściwości zdarzenia click
+    let url = event.srcElement.src;
+    document.querySelector("div#bigPicture img").src = url;
 }
 
 document.getElementById("bigPicture").addEventListener("click", showOverlay);
