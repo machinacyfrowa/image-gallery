@@ -1,4 +1,8 @@
 function showOverlay() {
+    //znajdz url zdjecia które znajduję się na środku (wewnątrz div#bigPicture)
+    let url = document.querySelector("div#bigPicture img").src;
+    //ustawiamy url zdjęcia pełnoekranowego na ten sam url
+    document.querySelector("div#fullScreenOverlay img").src = url;
     //pokazuje zdjęcie na całym ekranie
     let overlay = document.getElementById("fullScreenOverlay");
     overlay.style.display = "flex";
