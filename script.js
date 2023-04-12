@@ -42,6 +42,9 @@ function getRandomImageUrl() {
     let url = "https://picsum.photos/" + randomWidth + "/" + randomHeight;
     return url;
 }
+function thumbnailClick() {
+    console.log("działa!");
+}
 
 document.getElementById("bigPicture").addEventListener("click", showOverlay);
 document.getElementById("fullScreenOverlay").addEventListener("click", hideOverlay);
@@ -51,5 +54,11 @@ let imageList = document.getElementsByClassName("randomImage");
 for(let i = 0; i < imageList.length; i++) {
     //zmień url obrazka na wygenerowany losowo
     imageList[i].src = getRandomImageUrl();
+}
+//stworz listę wszystkich miniatur
+let thumbnailList = document.querySelectorAll("div#thumbnailRoll img");
+for(let i = 0; i < thumbnailList.length; i++) {
+    //po kliknięciu w miniaturkę uruchom funkcję thumbnainClick
+    thumbnailList[i].addEventListener('click', thumbnailClick);
 }
     
