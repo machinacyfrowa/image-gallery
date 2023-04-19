@@ -64,12 +64,30 @@ function thumbnailClick(event) {
     document.querySelector("div#bigPicture img").src = url;
 }
 function getNextImageURL() {
-
+    //pobierz url obecnego dużego obrazka
+    let currentImageUrl = document.querySelector("div#bigPicture img").src;
+    //pobierz wszystkie miniatury
+    let imageList = document.querySelectorAll("div#thumbnailRoll img");
+    //stwórz tablicę adresów url zdjęć
+    let urlList = [];
+    for(let i = 0; i < imageList.length; i++){
+        //wepchnij do tablicy url adres kolejnego zdjęcia z listy zdjęć
+        urlList.push(imageList[i].src);
+    }
+    //wyszukaj obecne zdjęcie w tablicy i znajdź jego index (kolejność)
+    let currentIndex = urlList.indexOf(currentImageUrl);
+    let nextImageUrl = urlList[currentIndex+1];
+    return nextImageUrl;
+}
+function nextImage() {
+    let nextImageUrl = getNextImageURL();
+    document.querySelector("div#bigPicture img").src = nextImageUrl;
 }
 //po załadowaniu html strony wywołaj funkcję init
 window.addEventListener("load", init);
 document.getElementById("bigPicture").addEventListener("click", showOverlay);
 document.getElementById("fullScreenOverlay").addEventListener("click", hideOverlay);
+document.querySelector("div#bigPictureContainer div#rightArrow").addEventListener("click", nextImage);
 
     
 
