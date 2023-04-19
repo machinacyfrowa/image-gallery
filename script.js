@@ -115,8 +115,21 @@ function moveRollRight() {
 
     //wyciągnij samą wartość liczbową
     currentLeft = parseInt(currentLeft)
-    //dodaj 10
+    //odejmij 100
     currentLeft -= 100;
+    //dodaj px
+    currentLeft += "px"
+
+    document.querySelector("div#movingRoll").style.left = currentLeft;
+}
+function moveRollLeft() {
+    //pobierz obecne przesunięcie razem z "px"
+    let currentLeft = document.querySelector("div#movingRoll").style.left;
+
+    //wyciągnij samą wartość liczbową
+    currentLeft = parseInt(currentLeft)
+    //dodaj 100
+    currentLeft += 100;
     //dodaj px
     currentLeft += "px"
 
@@ -129,5 +142,6 @@ document.getElementById("fullScreenOverlay").addEventListener("click", hideOverl
 document.querySelector("div#bigPictureContainer div#rightArrow").addEventListener("click", nextImage);
 document.querySelector("div#bigPictureContainer div#leftArrow").addEventListener("click", prevImage);
 document.querySelector("div#rightThumbnailArrow").addEventListener("click", moveRollRight);
+document.querySelector("div#leftThumbnailArrow").addEventListener("click", moveRollLeft);
     
 
