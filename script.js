@@ -80,8 +80,12 @@ function getNextImageURL() {
     urlList = getUrlList();
     //wyszukaj obecne zdjęcie w tablicy i znajdź jego index (kolejność)
     let currentIndex = urlList.indexOf(currentImageUrl);
-    let nextImageUrl = urlList[currentIndex+1];
-    return nextImageUrl;
+    if(currentIndex == urlList.length - 1) {
+        //obecny obrazek jest ostatnim na liście - zwróć pierwszy
+        return urlList[0];
+    } else {
+        return urlList[currentIndex+1];
+    }
 }
 function getPrevImageURL() {
     //pobierz url obecnego dużego obrazka
@@ -89,8 +93,12 @@ function getPrevImageURL() {
     urlList = getUrlList();
     //wyszukaj obecne zdjęcie w tablicy i znajdź jego index (kolejność)
     let currentIndex = urlList.indexOf(currentImageUrl);
-    let prevImageUrl = urlList[currentIndex-1];
-    return prevImageUrl;
+    if(currentIndex == 0) {
+        //pierwszy na liście - zwróć ostatni
+        return urlList[urlList.length - 1];
+    } else {
+        return urlList[currentIndex-1];
+    }
 }
 function nextImage() {
     let nextImageUrl = getNextImageURL();
