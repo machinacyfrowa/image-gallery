@@ -63,9 +63,7 @@ function thumbnailClick(event) {
     let url = event.srcElement.src;
     document.querySelector("div#bigPicture img").src = url;
 }
-function getNextImageURL() {
-    //pobierz url obecnego dużego obrazka
-    let currentImageUrl = document.querySelector("div#bigPicture img").src;
+function getUrlList() {
     //pobierz wszystkie miniatury
     let imageList = document.querySelectorAll("div#thumbnailRoll img");
     //stwórz tablicę adresów url zdjęć
@@ -74,20 +72,39 @@ function getNextImageURL() {
         //wepchnij do tablicy url adres kolejnego zdjęcia z listy zdjęć
         urlList.push(imageList[i].src);
     }
+    return urlList;
+}
+function getNextImageURL() {
+    //pobierz url obecnego dużego obrazka
+    let currentImageUrl = document.querySelector("div#bigPicture img").src;
+    urlList = getUrlList();
     //wyszukaj obecne zdjęcie w tablicy i znajdź jego index (kolejność)
     let currentIndex = urlList.indexOf(currentImageUrl);
     let nextImageUrl = urlList[currentIndex+1];
     return nextImageUrl;
 }
+function getPrevImageURL() {
+    //pobierz url obecnego dużego obrazka
+    let currentImageUrl = document.querySelector("div#bigPicture img").src;
+    urlList = getUrlList();
+    //wyszukaj obecne zdjęcie w tablicy i znajdź jego index (kolejność)
+    let currentIndex = urlList.indexOf(currentImageUrl);
+    let prevImageUrl = urlList[currentIndex-1];
+    return prevImageUrl;
+}
 function nextImage() {
     let nextImageUrl = getNextImageURL();
     document.querySelector("div#bigPicture img").src = nextImageUrl;
+}
+function prevImage() {
+    let prevImageUrl = getPrevImageURL();
+    document.querySelector("div#bigPicture img").src = prevImageUrl;
 }
 //po załadowaniu html strony wywołaj funkcję init
 window.addEventListener("load", init);
 document.getElementById("bigPicture").addEventListener("click", showOverlay);
 document.getElementById("fullScreenOverlay").addEventListener("click", hideOverlay);
 document.querySelector("div#bigPictureContainer div#rightArrow").addEventListener("click", nextImage);
-
+document.querySelector("div#bigPictureContainer div#leftArrow").addEventListener("click", prevImage);
     
 
