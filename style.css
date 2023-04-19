@@ -44,6 +44,11 @@ div#thumbnailContainer div#thumbnailRoll {
     flex: 10;
     overflow: hidden;
 }
+div#thumbnailContainer div#thumbnailRoll div#movingRoll {
+    height: 100%;
+    position: relative;
+    
+}
 div#thumbnailContainer div#thumbnailRoll img {
     height: 100%;
     margin-right: 1rem;

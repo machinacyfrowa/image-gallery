@@ -108,11 +108,26 @@ function prevImage() {
     let prevImageUrl = getPrevImageURL();
     document.querySelector("div#bigPicture img").src = prevImageUrl;
 }
+function moveRollRight() {
+
+    //pobierz obecne przesunięcie razem z "px"
+    let currentLeft = document.querySelector("div#movingRoll").style.left;
+
+    //wyciągnij samą wartość liczbową
+    currentLeft = parseInt(currentLeft)
+    //dodaj 10
+    currentLeft -= 100;
+    //dodaj px
+    currentLeft += "px"
+
+    document.querySelector("div#movingRoll").style.left = currentLeft;
+}
 //po załadowaniu html strony wywołaj funkcję init
 window.addEventListener("load", init);
 document.getElementById("bigPicture").addEventListener("click", showOverlay);
 document.getElementById("fullScreenOverlay").addEventListener("click", hideOverlay);
 document.querySelector("div#bigPictureContainer div#rightArrow").addEventListener("click", nextImage);
 document.querySelector("div#bigPictureContainer div#leftArrow").addEventListener("click", prevImage);
+document.querySelector("div#rightThumbnailArrow").addEventListener("click", moveRollRight);
     
 
