@@ -1,3 +1,19 @@
+function init() {
+    //znajdź wszystkie obrazki na rolce miniatur
+    let imageList = document.querySelectorAll("div#thumbnailRoll img");
+    //dla każdego wygeneruj randomowy url
+    for(let i = 0; i < imageList.length; i++) {
+        imageList[i].src = getRandomImageUrl();
+    }
+    //ustaw główny obrazek na pierwszy obrazek z rolki miniatur
+    document.querySelector("div#bigPicture img").src = imageList[0].src;
+
+    //dodaj zdarzenie do obrazków na rolce
+    let thumbnailList = document.querySelectorAll("div#thumbnailRoll img");
+    for(let i = 0; i < thumbnailList.length; i++) {
+        thumbnailList[i].addEventListener('click', thumbnailClick);
+    }
+}
 function showOverlay() {
     //znajdz url zdjecia które znajduję się na środku (wewnątrz div#bigPicture)
     let url = document.querySelector("div#bigPicture img").src;
@@ -47,20 +63,13 @@ function thumbnailClick(event) {
     let url = event.srcElement.src;
     document.querySelector("div#bigPicture img").src = url;
 }
+function getNextImageURL() {
 
+}
+//po załadowaniu html strony wywołaj funkcję init
+window.addEventListener("load", init);
 document.getElementById("bigPicture").addEventListener("click", showOverlay);
 document.getElementById("fullScreenOverlay").addEventListener("click", hideOverlay);
-//wygeneruj listę wszystkich obrazków na stronie o klasie randomImage
-let imageList = document.getElementsByClassName("randomImage");
-//przejdź przez listę pętlą
-for(let i = 0; i < imageList.length; i++) {
-    //zmień url obrazka na wygenerowany losowo
-    imageList[i].src = getRandomImageUrl();
-}
-//stworz listę wszystkich miniatur
-let thumbnailList = document.querySelectorAll("div#thumbnailRoll img");
-for(let i = 0; i < thumbnailList.length; i++) {
-    //po kliknięciu w miniaturkę uruchom funkcję thumbnainClick
-    thumbnailList[i].addEventListener('click', thumbnailClick);
-}
+
     
+
